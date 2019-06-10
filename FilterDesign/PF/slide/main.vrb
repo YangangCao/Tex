@@ -1,0 +1,9 @@
+\begin{lstlisting}
+C = [H0/2*(c^2-1)*d, H0/2*(c^2-1)];
+D = [H0/2*(1+c) + 1];
+for n=1:length(audio)
+    x_1 = A * x + B * audio(n);
+    y(n) = C * x + D * audio(n);
+    x = x_1;
+end
+\end{lstlisting}

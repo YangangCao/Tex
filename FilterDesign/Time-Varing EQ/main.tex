@@ -1,0 +1,39 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{draftwatermark} % 设置水印
+\SetWatermarkText{DNV Group} % 水印内容
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\date{February 20, 2019}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+\begin{document}
+
+\title{Time-Varying Equalizers }
+\maketitle 
+There is a wide range of effects that are based on time-varying equalizers, some of which are briefly described in the following:
+\begin{itemize}
+\item Time-varying octave bandpass filters, as shown in Figure 2.25, offer the possibility of achieving wah-wah-like effects. The spectrogram of the output signal in Figure 2.26 demonstrates the octave spaced enhancement of this approach.
+\item Time-varying shelving and peak filters: the special allpass realization of shelving and peak filters has shown that a combination of lowpass, bandpass and allpass filters gives access to several frequency bands inside such a filter structure. Integrating level measurement or envelope followers (see Chapter 4) into these frequency bands can be used for adaptively changing the filter parameters gain, cut-off/center frequency and bandwidth or Q factor. The combination of dynamics processing, which will be discussed in Chapter 4, and parametric filter structures allows the creation of signal dependent filtering effects with a variety of applications.
+\item Feedback cancellers, which are based on time-varying notch filters, play an important role in sound reinforcement systems. The spectrum is continuously monitored for spectral peaks and a very narrow-band notch filter is applied to the signal path.
+\end{itemize}
+\end{document}

@@ -1,0 +1,20 @@
+Matlab code:
+\begin{lstlisting}
+function y = highshelvingunit(audio, para)
+% Applies a high-frequency shelving filter to the input signal.
+% para(1) is the normalized cut-off frequency in (0,1), i.e. 2*fc/fs
+% para(2) is the gain in dB
+V0 = 10^(para(2)/20); H0 = V0 - 1;
+if para(2) >= 0
+    c = (tan(pi*para(1)/2)-1) / (tan(pi*para(1)/2)+1);     % boost
+else
+    c = (tan(pi*para(1)/2)-V0) / (tan(pi*para(1)/2)+V0);   % cut
+end
+x = 0;
+x_1 = 0;
+for n=1:length(audio)
+    x_1 = -c * x + audio(n);
+    y(n) = H0/2 * (c^2-1) * x + (H0/2 * (1-c) + 1) * audio(n);
+    x = x_1;
+end
+\end{lstlisting}

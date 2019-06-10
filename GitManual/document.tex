@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage[UTF8, heading = false, scheme = plain]{ctex}
+\usepackage[colorlinks,urlcolor=blue]{hyperref}
+\author{Yangang Cao}
+\begin{document}
+	\title{The Manual of Git}
+	\maketitle
+	\noindent 对文件修改完毕后，鼠标双击进入git仓库，按住shift点击鼠标右键，在弹出的选项中选择“在当前文件夹打开powershell”。
+	\newline
+	\\常用命令列举: 
+	\begin{itemize}
+\item{\bfseries git status}: 检查git仓库的当前状态
+\item{\bfseries git add .}: 将所有工作区修改添加进暂存区,注意有个“.”
+\item{\bfseries git commit -m “$\ $”}: 将暂存区的修改添加进版本库，双引号内填写本次commit的备注
+\item{\bfseries git push}: 将版本库的修改上传至\href{https://github.com}{远程仓库}
+\item{\bfseries git log}: 查看历史commit记录，若一页不能完全显示，按“f”（forward）前进，按“b”（back）回退，按“q”（quit）退出翻页状态，返回命令行模式
+\item{\bfseries git reset -\/-hard (commit ID)}: 回退版本至指定commit ID，可通过git log查看commit ID，取前四位即可
+	\end{itemize}
+更多详细资料参考：\href{https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000}{廖雪峰的Git教程} 
+\end{document}

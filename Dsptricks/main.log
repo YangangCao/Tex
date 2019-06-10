@@ -1,0 +1,863 @@
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.3.25)  3 APR 2019 11:44
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\captionmargin=\dimen103
+\captionmargin@=\dimen104
+\captionwidth=\dimen105
+\caption@tempdima=\dimen106
+\caption@indent=\dimen107
+\caption@parindent=\dimen108
+\caption@hangindent=\dimen109
+)
+\c@ContinuedFloat=\count88
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mathdesign.sty
+Package: mathdesign 2013/08/29 v2.31 Math Design Project
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/mdput.cfg)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/mdput.sty
+Package: mdput 2013/08/29 v2.31 adobe utopia + mdput (Math Design Project)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdfont.def
+File: mdfont.def 2013/08/29 v2.31 (Math Design Project)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdsffont.def
+File: mdsffont.def 2013/08/29 v2.31 (Math Design Project)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdttfont.def
+File: mdttfont.def 2013/08/29 v2.31 (Math Design Project)
+)
+\symmdcal=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mdcal' in version `bold'
+(Font)                  OMS/mdput/m/n --> OMS/mdput/b/n on input line 97.
+\symmdscr=\mathgroup5
+LaTeX Font Info:    Overwriting symbol font `mdscr' in version `bold'
+(Font)                  OMS/mdput/m/n --> OMS/mdput/b/n on input line 103.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/xmdeuf/m/n --> U/xmdeuf/b/n on input line 110.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/mdput/m/n on input line 121.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/mdput/m/it on input line 122.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/mdput/m/n on input line 123.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/mdput/m/n on input line 124.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/mdput/b/n on input line 126.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/mdput/b/it on input line 127.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/mdput/b/n on input line 128.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/mdput/b/n on input line 129.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/mdput/m/n --> TU/mdput/m/n on input line 131.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/mdput/b/n on input line 132.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/mdput/m/it on input line 133.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 134.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 135.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
+(Font)                  OT1/mdput/b/n --> TU/mdput/b/n on input line 137.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/mdput/b/n on input line 138.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/mdput/b/it on input line 139.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 140.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 141.
+\symlettersupright=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lettersupright' in version `bold'
+(Font)                  OML/mdput/m/n --> OML/mdput/b/n on input line 144.
+LaTeX Font Info:    Redeclaring math alphabet \mathrm on input line 145.
+LaTeX Font Info:    Overwriting math alphabet `\mathcal' in version `normal'
+(Font)                  OMS/mdput/m/n --> OMS/mdput/m/n on input line 167.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks15
+\XKV@tempa@toks=\toks16
+)
+\XKV@depth=\count89
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+LaTeX Font Info:    Try loading font information for TU+mdput on input line 186
+.
+LaTeX Font Info:    No file TUmdput.fd. on input line 186.
+
+
+LaTeX Font Warning: Font shape `TU/mdput/m/n' undefined
+(Font)              using `TU/lmr/m/n' instead on input line 186.
+
+LaTeX Font Info:    Redeclaring math accent \widetilde on input line 449.
+LaTeX Font Info:    Redeclaring math accent \widehat on input line 450.
+\symmathdesignA=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `mathdesignA' in version `bold'
+(Font)                  MDA/mdput/m/n --> MDA/mdput/b/n on input line 491.
+\symmathdesignB=\mathgroup8
+LaTeX Font Info:    Overwriting symbol font `mathdesignB' in version `bold'
+(Font)                  MDB/mdput/m/n --> MDB/mdput/b/n on input line 498.
+\@emptytoks=\toks17
+LaTeX Font Info:    Redeclaring math accent \widetilde on input line 532.
+LaTeX Font Info:    Redeclaring math accent \widehat on input line 533.
+\rulethickness=\skip43
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+)
+LaTeX Font Info:    Try loading font information for T1+mdput on input line 105
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/t1mdput.fd
+File: t1mdput.fd 2013/08/29 Fontinst v1.933 font definitions for T1/mdput.
+)
+LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
+(Font)              scaled to size 10.29301pt on input line 105.
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/dsptricks/dsptricks.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/pstricks/pstricks.sty
+Package: pstricks 2018/01/06 v0.67 LaTeX wrapper for `PSTricks' (RN,HV)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, 
+and LuaTeX
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 69.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 225.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pstricks/pstricks.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pstricks/pst-fp.tex
+`pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count90
+\pstFP@xia=\count91
+\pstFP@xib=\count92
+\pstFP@xfa=\count93
+\pstFP@xfb=\count94
+\pstFP@rega=\count95
+\pstFP@regb=\count96
+\pstFP@regs=\count97
+\pstFP@times=\count98
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks18
+\pgfutil@tempdima=\dimen110
+\pgfutil@tempdimb=\dimen111
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks21
+))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+\pgf@x=\dimen112
+\pgf@xa=\dimen113
+\pgf@xb=\dimen114
+\pgf@xc=\dimen115
+\pgf@y=\dimen116
+\pgf@ya=\dimen117
+\pgf@yb=\dimen118
+\pgf@yc=\dimen119
+\c@pgf@counta=\count99
+\c@pgf@countb=\count100
+\c@pgf@countc=\count101
+\c@pgf@countd=\count102
+\pgfutil@tempcnta=\count103
+\pgfutil@tempcntb=\count104
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen120
+\pgfmath@count=\count105
+\pgfmath@box=\box26
+\pgfmath@toks=\toks22
+\pgfmath@stack@operand=\toks23
+\pgfmath@stack@operation=\toks24
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count106
+))
+\pgffor@iter=\dimen121
+\pgffor@skip=\dimen122
+\pgffor@stack=\toks25
+\pgffor@toks=\toks26
+)
+\psLoopIndex=\count107
+
+`PSTricks' v2.82  <2018/01/06> (tvz,hv)
+\pst@dima=\dimen123
+\pst@dimb=\dimen124
+\pst@dimc=\dimen125
+\pst@dimd=\dimen126
+\pst@dimg=\dimen127
+\pst@dimh=\dimen128
+\pst@dimm=\dimen129
+\pst@dimn=\dimen130
+\pst@dimo=\dimen131
+\pst@dimp=\dimen132
+\pst@hbox=\box27
+\pst@ibox=\box28
+\pst@boxg=\box29
+\pst@cnta=\count108
+\pst@cntb=\count109
+\pst@cntc=\count110
+\pst@cntd=\count111
+\pst@cntg=\count112
+\pst@cnth=\count113
+\pst@cntm=\count114
+\pst@cntn=\count115
+\pst@cnto=\count116
+\pst@cntp=\count117
+\@zero=\count118
+\pst@toks=\toks27
+(/usr/local/texlive/2018/texmf-dist/tex/xelatex/xetex-pstricks/pstricks.con
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pstricks/config/xdvipdfmx.cfg))
+\psunit=\dimen133
+\psxunit=\dimen134
+\psyunit=\dimen135
+\pst@C@@rType=\count119
+\pslinewidth=\dimen136
+\psk@startLW=\dimen137
+\psk@endLW=\dimen138
+\pst@customdefs=\toks28
+\pslinearc=\dimen139
+\pst@symbolStep=\dimen140
+\pst@symbolWidth=\dimen141
+\pst@symbolLinewidth=\dimen142
+\everypsbox=\toks29
+\psframesep=\dimen143
+\pslabelsep=\dimen144
+\sh@wgridXunit=\dimen145
+\sh@wgridYunit=\dimen146
+\pst@shift=\dimen147
+(/usr/local/texlive/2018/texmf-dist/tex/xelatex/xetex-pstricks/pstricks.con
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pstricks/config/xdvipdfmx.cfg
+Using PSTricks configuration for XeTeX+xdvipdfmx
+)))
+File: pstricks.tex 2018/01/06 v2.82 `PSTricks' (tvz,hv)
+ (/usr/local/texlive/2018/texmf-dist/tex/generic/pstricks/pst-fp.tex)
+File: pst-fp.tex 2018/01/06 v2.82 `PST-fp' (hv)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/pstricks-add/pstricks-add.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/pst-plot/pst-plot.sty
+Package: pst-plot 2011/06/05 v1.00 LaTeX wrapper for `pst-plot' (HV)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/xkeyval/pst-xkey.sty
+Package: pst-xkey 2005/11/25 v1.6 package wrapper for pst-xkey.tex (HA)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/multido/multido.sty
+Package: multido 2004/05/17 package wrapper for PSTricks `multido.tex', (HV/RN)
+
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/multido/multido.tex
+ v1.42, 2010/05/14 <tvz>
+\multido@count=\count120
+\multidocount=\count121
+\multido@stuff=\toks30
+)
+File: multido.tex 2010/05/14 v1.42 `multido' (tvz,hv)
+)
+Package: pst-plot 2011/04/13 package wrapper for pst-plot.tex (hv)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pst-plot/pst-plot.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pst-tools/pst-tools.tex
+`PST-tools' v0.09b, 2017/12/03 (hv))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pstricks-add/pstricks-add.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pst-node/pst-node.tex
+ v1.41, 2017/12/30
+\psrow=\count122
+\pscol=\count123
+\psmatrixcnt=\count124
+\psrowsep=\skip44
+\pscolsep=\skip45
+\pst@args=\count125
+\num@pts=\count126
+\pst@argcnt=\count127
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pst-arrow/pst-arrow.tex
+`pst-arrow' v0.01, 2016/09/01 (dr,hv)
+\pshooklength=\dimen148
+\pshookwidth=\dimen149
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pst-3d/pst-3d.tex
+`PST-3d' v1.11, 2010/02/14 (tvz))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pst-math/pst-math.tex
+`pst-math' v0.63 , (CJ,hv)) `pstricks-add' v3.85a, 2018/02/03 (dr,hv)
+\psparallelogramsep=\dimen150
+\pst@cntC=\count128
+\pst@stepcount=\count129
+\chart@ColorIndex=\dimen151
+\chart@ColorStep=\dimen152
+\pst@chartHeight=\dimen153
+\pst@chartStackDepth=\dimen154
+\pst@chartStackWidth=\dimen155
+\chart@Toggle=\count130
+\psVectorCtr=\count131
+)
+ v1.90, 2018/03/28 (tvz,hv)
+\pstRadUnit=\dimen156
+\pstRadUnitInv=\dimen157
+\pst@linecnt=\count132
+\RCD@file=\read1
+\psxlabelsep=\dimen158
+\psylabelsep=\dimen159
+\psk@subticksize=\dimen160
+\pst@xticksizeA=\dimen161
+\pst@xticksizeB=\dimen162
+\pst@xticksizeC=\dimen163
+\pst@yticksizeA=\dimen164
+\pst@yticksizeB=\dimen165
+\pst@yticksizeC=\dimen166
+\@digitcounter=\count133
+\psk@llx=\dimen167
+\psk@lly=\dimen168
+\psk@urx=\dimen169
+\psk@ury=\dimen170
+\pst@xunit=\dimen171
+\pst@yunit=\dimen172
+)
+File: pst-plot.tex 2018/03/28 1.90 `pst-plot' (tvz,hv)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/pst-node/pst-node.sty
+Package: pst-node 2012/09/18 v1.01 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pst-node/pst-node.tex)
+File: pst-node.tex 2018/03/28 1.90 `pst-node' (tvz,hv)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/pst-3d/pst-3d.sty
+Package: pst-3d 2009/07/28 package wrapper for pst-3d.tex (hv)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pst-3d/pst-3d.tex)
+File: pst-3d.tex 2018/03/28 v1.90 `PST-3d' (hv)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/pst-math/pst-math.sty
+Package: pst-math 2014/07/30 package wrapper for PSTricks pst-math.tex
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pst-math/pst-math.tex)
+File: pst-math.tex 2018/03/28 v1.90 `PST-math' (hv)
+)
+Package: pstricks-add 2018/02/03 v. 0.15 package wrapper for pstricks-add.tex (
+hv)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/pstricks-add/pstricks-add.tex)
+File: pstricks-add.tex 2018/03/28 v1.90 `PSTricks-add' (hv)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2018/03/05 L3 programming layer (loader) 
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2018/03/05 L3 programming layer (code)
+\c_max_int=\count134
+\l_tmpa_int=\count135
+\l_tmpb_int=\count136
+\g_tmpa_int=\count137
+\g_tmpb_int=\count138
+\g__intarray_font_int=\count139
+\g__prg_map_int=\count140
+\c_log_iow=\count141
+\l_iow_line_count_int=\count142
+\l__iow_line_target_int=\count143
+\l__iow_one_indent_int=\count144
+\l__iow_indent_int=\count145
+\c_zero_dim=\dimen173
+\c_max_dim=\dimen174
+\l_tmpa_dim=\dimen175
+\l_tmpb_dim=\dimen176
+\g_tmpa_dim=\dimen177
+\g_tmpb_dim=\dimen178
+\c_zero_skip=\skip46
+\c_max_skip=\skip47
+\l_tmpa_skip=\skip48
+\l_tmpb_skip=\skip49
+\g_tmpa_skip=\skip50
+\g_tmpb_skip=\skip51
+\c_zero_muskip=\muskip10
+\c_max_muskip=\muskip11
+\l_tmpa_muskip=\muskip12
+\l_tmpb_muskip=\muskip13
+\g_tmpa_muskip=\muskip14
+\g_tmpb_muskip=\muskip15
+\l_keys_choice_int=\count146
+\c__fp_leading_shift_int=\count147
+\c__fp_middle_shift_int=\count148
+\c__fp_trailing_shift_int=\count149
+\c__fp_big_leading_shift_int=\count150
+\c__fp_big_middle_shift_int=\count151
+\c__fp_big_trailing_shift_int=\count152
+\c__fp_Bigg_leading_shift_int=\count153
+\c__fp_Bigg_middle_shift_int=\count154
+\c__fp_Bigg_trailing_shift_int=\count155
+\l__sort_length_int=\count156
+\l__sort_min_int=\count157
+\l__sort_top_int=\count158
+\l__sort_max_int=\count159
+\l__sort_true_max_int=\count160
+\l__sort_block_int=\count161
+\l__sort_begin_int=\count162
+\l__sort_end_int=\count163
+\l__sort_A_int=\count164
+\l__sort_B_int=\count165
+\l__sort_C_int=\count166
+\l__tl_build_start_index_int=\count167
+\l__tl_build_index_int=\count168
+\l__tl_analysis_normal_int=\count169
+\l__tl_analysis_index_int=\count170
+\l__tl_analysis_nesting_int=\count171
+\l__tl_analysis_type_int=\count172
+\l__regex_internal_a_int=\count173
+\l__regex_internal_b_int=\count174
+\l__regex_internal_c_int=\count175
+\l__regex_balance_int=\count176
+\l__regex_group_level_int=\count177
+\l__regex_mode_int=\count178
+\c__regex_cs_in_class_mode_int=\count179
+\c__regex_cs_mode_int=\count180
+\l__regex_catcodes_int=\count181
+\l__regex_default_catcodes_int=\count182
+\c__regex_catcode_L_int=\count183
+\c__regex_catcode_O_int=\count184
+\c__regex_catcode_A_int=\count185
+\c__regex_all_catcodes_int=\count186
+\l__regex_show_lines_int=\count187
+\l__regex_min_state_int=\count188
+\l__regex_max_state_int=\count189
+\l__regex_left_state_int=\count190
+\l__regex_right_state_int=\count191
+\l__regex_capturing_group_int=\count192
+\l__regex_min_pos_int=\count193
+\l__regex_max_pos_int=\count194
+\l__regex_curr_pos_int=\count195
+\l__regex_start_pos_int=\count196
+\l__regex_success_pos_int=\count197
+\l__regex_curr_char_int=\count198
+\l__regex_curr_catcode_int=\count199
+\l__regex_last_char_int=\count266
+\l__regex_case_changed_char_int=\count267
+\l__regex_curr_state_int=\count268
+\l__regex_step_int=\count269
+\l__regex_min_active_int=\count270
+\l__regex_max_active_int=\count271
+\l__regex_replacement_csnames_int=\count272
+\l__regex_match_count_int=\count273
+\l__regex_min_submatch_int=\count274
+\l__regex_submatch_int=\count275
+\l__regex_zeroth_submatch_int=\count276
+\g__regex_trace_regex_int=\count277
+\c_empty_box=\box30
+\l_tmpa_box=\box31
+\l_tmpb_box=\box32
+\g_tmpa_box=\box33
+\g_tmpb_box=\box34
+\l__box_top_dim=\dimen179
+\l__box_bottom_dim=\dimen180
+\l__box_left_dim=\dimen181
+\l__box_right_dim=\dimen182
+\l__box_top_new_dim=\dimen183
+\l__box_bottom_new_dim=\dimen184
+\l__box_left_new_dim=\dimen185
+\l__box_right_new_dim=\dimen186
+\l__box_internal_box=\box35
+\l__coffin_internal_box=\box36
+\l__coffin_internal_dim=\dimen187
+\l__coffin_offset_x_dim=\dimen188
+\l__coffin_offset_y_dim=\dimen189
+\l__coffin_x_dim=\dimen190
+\l__coffin_y_dim=\dimen191
+\l__coffin_x_prime_dim=\dimen192
+\l__coffin_y_prime_dim=\dimen193
+\c_empty_coffin=\box37
+\l__coffin_aligned_coffin=\box38
+\l__coffin_aligned_internal_coffin=\box39
+\l_tmpa_coffin=\box40
+\l_tmpb_coffin=\box41
+\l__coffin_display_coffin=\box42
+\l__coffin_display_coord_coffin=\box43
+\l__coffin_display_pole_coffin=\box44
+\l__coffin_display_offset_dim=\dimen194
+\l__coffin_display_x_dim=\dimen195
+\l__coffin_display_y_dim=\dimen196
+\l__coffin_bounding_shift_dim=\dimen197
+\l__coffin_left_corner_dim=\dimen198
+\l__coffin_right_corner_dim=\dimen199
+\l__coffin_bottom_corner_dim=\dimen256
+\l__coffin_top_corner_dim=\dimen257
+\l__coffin_scaled_total_height_dim=\dimen258
+\l__coffin_scaled_width_dim=\dimen259
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/l3kernel/l3xdvipdfmx.def
+File: l3xdvidpfmx.def 2017/03/18 v L3 Experimental driver: xdvipdfmx
+\g__driver_image_int=\count278
+))
+Package: xparse 2018/02/21 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count279
+\g__xparse_grabber_int=\count280
+\l__xparse_m_args_int=\count281
+\l__xparse_mandatory_args_int=\count282
+\l__xparse_v_nesting_int=\count283
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \psCalc with sig. 'm' on line 23.
+.................................................
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count284
+\calc@Bcount=\count285
+\calc@Adimen=\dimen260
+\calc@Bdimen=\dimen261
+\calc@Askip=\skip52
+\calc@Bskip=\skip53
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count286
+\calc@Cskip=\skip54
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp.sty
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/defpattern.sty
+Package: defpattern 1994/10/12
+\actioncount=\count287
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-basic.sty
+Package: fp-basic 1996/05/13
+\FP@xs=\count288
+\FP@xia=\count289
+\FP@xib=\count290
+\FP@xfa=\count291
+\FP@xfb=\count292
+\FP@rega=\count293
+\FP@regb=\count294
+\FP@regs=\count295
+\FP@times=\count296
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-addons.sty
+Package: fp-addons 1995/03/15
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-snap.sty
+Package: fp-snap 1995/04/05
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-exp.sty
+Package: fp-exp 1995/04/03
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-trigo.sty
+Package: fp-trigo 1995/04/14
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-pas.sty
+Package: fp-pas 1994/08/29
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-random.sty
+Package: fp-random 1995/02/23
+\FPseed=\count297
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-eqn.sty
+Package: fp-eqn 1995/04/03
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-upn.sty
+Package: fp-upn 1996/10/21
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fp/fp-eval.sty
+Package: fp-eval 1995/04/03
+))
+Package: dsptricks 2014/07/24 package for signal processing graphics
+\dspWidth=\skip55
+\dspHeight=\skip56
+\dspW=\skip57
+\dspH=\skip58
+\dspBU=\skip59
+\dspLineWidth=\skip60
+\dspStemWidth=\skip61
+\dspDotSize=\skip62
+\dspTickLen=\skip63
+\dspXTickGap=\skip64
+\dspYTickGap=\skip65
+\dspTickLineWidth=\skip66
+\dspFrameLineWidth=\skip67
+\dspUnitX=\skip68
+\dspUnitY=\skip69
+\dspTmpLen=\skip70
+\dspCPW=\skip71
+\dspCPH=\skip72
+\dspNum=\count298
+\dspDen=\count299
+\dspTerm=\count300
+\dspFact=\count301
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/dsptricks/dspfunctions.sty
+Package: dspfunctions 2014/07/24 package for signal processing graphics
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/dsptricks/dspblocks.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fmtcount/fmtcount.sty
+Invalid UTF-8 byte or sequence at line 10 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
+Package: fmtcount 2017/12/24 v3.05
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count302
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fmtcount/fcprefix.sty
+Invalid UTF-8 byte or sequence at line 10 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
+Package: fcprefix 2012/09/28
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fmtcount/fcnumparser.sty
+Invalid UTF-8 byte or sequence at line 10 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
+Package: fcnumparser 2017/06/15
+\fc@digit@counter=\count303
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks31
+\ex@=\dimen262
+)
+\c@padzeroesN=\count304
+\fc@tmpcatcode=\count305
+\@DT@modctr=\count306
+\@ordinalctr=\count307
+\@orgargctr=\count308
+\@strctr=\count309
+\@tmpstrctr=\count310
+\@DT@loopN=\count311
+\@DT@X=\count312
+)
+Package: dspblocks 2014/07/24 package for signal processing graphics
+) (./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for MDA/cmr/m/n on input line 9.
+LaTeX Font Info:    Try loading font information for MDA+cmr on input line 9.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdacmr.fd
+File: mdacmr.fd 
+)
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for MDB/cmr/m/n on input line 9.
+LaTeX Font Info:    Try loading font information for MDB+cmr on input line 9.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdbcmr.fd
+File: mdbcmr.fd 
+)
+LaTeX Font Info:    ... okay on input line 9.
+Package caption3 Info: Fixing ArabTeX on input line 9.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fmtcount/fc-english.def
+Invalid UTF-8 byte or sequence at line 10 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
+File: fc-english.def 2016/01/12
+)
+LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 11.
+LaTeX Font Info:    Try loading font information for OT1+mdput on input line 17
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/ot1mdput.fd
+File: ot1mdput.fd 2013/08/29 Fontinst v1.933 font definitions for OT1/mdput.
+)
+LaTeX Font Info:    Font shape `OT1/mdput/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 17.
+LaTeX Font Info:    Font shape `OT1/mdput/m/n' will be
+(Font)              scaled to size 5.64001pt on input line 17.
+LaTeX Font Info:    Font shape `OT1/mdput/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 17.
+LaTeX Font Info:    Try loading font information for OML+mdput on input line 17
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/omlmdput.fd
+File: omlmdput.fd 2013/08/29 Fontinst v1.933 font definitions for OML/mdput.
+)
+LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
+(Font)              scaled to size 8.46002pt on input line 17.
+LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
+(Font)              scaled to size 5.64001pt on input line 17.
+LaTeX Font Info:    Font shape `OML/mdput/m/it' will be
+(Font)              scaled to size 4.70001pt on input line 17.
+LaTeX Font Info:    Try loading font information for OMS+mdput on input line 17
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/omsmdput.fd
+File: omsmdput.fd 2013/08/29 Fontinst v1.933 font definitions for OMS/mdput.
+)
+LaTeX Font Info:    Font shape `OMS/mdput/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 17.
+LaTeX Font Info:    Font shape `OMS/mdput/m/n' will be
+(Font)              scaled to size 5.64001pt on input line 17.
+LaTeX Font Info:    Font shape `OMS/mdput/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 17.
+LaTeX Font Info:    Try loading font information for OMX+mdput on input line 17
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/omxmdput.fd
+File: omxmdput.fd 2013/08/29 Fontinst v1.933 font definitions for OMX/mdput.
+)
+LaTeX Font Info:    Font shape `OMX/mdput/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 17.
+LaTeX Font Info:    Font shape `OMX/mdput/m/n' will be
+(Font)              scaled to size 5.64001pt on input line 17.
+LaTeX Font Info:    Font shape `OMX/mdput/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 17.
+LaTeX Font Info:    Font shape `OML/mdput/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 17.
+LaTeX Font Info:    Font shape `OML/mdput/m/n' will be
+(Font)              scaled to size 5.64001pt on input line 17.
+LaTeX Font Info:    Font shape `OML/mdput/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 17.
+LaTeX Font Info:    Try loading font information for MDA+mdput on input line 17
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/mdamdput.fd
+File: mdamdput.fd 2013/08/29 Fontinst v1.933 font definitions for MDA/mdput.
+)
+LaTeX Font Info:    Font shape `MDA/mdput/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 17.
+LaTeX Font Info:    Font shape `MDA/mdput/m/n' will be
+(Font)              scaled to size 5.64001pt on input line 17.
+LaTeX Font Info:    Font shape `MDA/mdput/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 17.
+LaTeX Font Info:    Try loading font information for MDB+mdput on input line 17
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/mathdesign/mdput/mdbmdput.fd
+File: mdbmdput.fd 2013/08/29 Fontinst v1.933 font definitions for MDB/mdput.
+)
+LaTeX Font Info:    Font shape `MDB/mdput/m/n' will be
+(Font)              scaled to size 8.46002pt on input line 17.
+LaTeX Font Info:    Font shape `MDB/mdput/m/n' will be
+(Font)              scaled to size 5.64001pt on input line 17.
+LaTeX Font Info:    Font shape `MDB/mdput/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 17.
+
+[1
+
+] [2] (./main.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 21884 strings out of 492970
+ 405825 string characters out of 6133938
+ 632238 words of memory out of 5000000
+ 25637 multiletter control sequences out of 15000+600000
+ 559581 words of font info for 46 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 51i,6n,55p,10382b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on main.pdf (2 pages).

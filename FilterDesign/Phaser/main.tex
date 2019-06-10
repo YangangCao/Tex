@@ -1,0 +1,73 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{draftwatermark} % 设置水印
+\SetWatermarkText{DNV Group} % 水印内容
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\date{February 20, 2019}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+\begin{document}
+
+\title{Phaser Design}
+\maketitle 
+The previous wah-wah effect relies on varying the center frequency of a bandpass filter. Another effect uses notch filters: phasing. A set of notch filters, that can be realized as a cascade of second-order IIR sections, is used to process the input signal. The output of the notch filters is then combined with the direct sound. The frequencies of the notches are slowly varied using a low-frequency oscillator. The strong phase shifts that exist around the notch frequencies combine with the phases of the direct signal and cause phase cancellations or enhancements that sweep up and down the frequency axis. Although this effect does not rely on a delay line, it is often considered to go along with delay-line-based effects because the sound effect is similar to that of $flanging$.
+
+A different phasing approach is proposed. The notch filters have been replaced by second-order allpass filters with time-varying center frequencies. The cascade of allpass filters produces time-varying phase shifts which lead to cancellations and amplifications of different frequency bands when used in the feedforward and feedback configuration.
+
+In analog hardware, such as the Univibe or MXR phase shifters, the allpass filters are typically first-order. Thus, each analog allpass has a transfer function of the form
+\[
+H_a(s) = -\frac{s-\omega_b}{s+\omega_b},\eqno{(1)}
+\]
+where we will call $\omega_b$ (a real number) the break frequency of the allpass.
+
+To create a virtual analog phaser, following closely the design of typical analog phasers, we
+must translate each first-order allpass to the digital domain. In discrete time, the general first-order allpass has the transfer function
+\[
+AP(z) = -\frac{g_i+z^{-1}}{1+g_iz^{-1}}.\eqno{(2)}
+\]
+Thus, we wish to “digitize” each first-order allpass by means of a mapping from the $s$ plane to the $z$ plane. There are several ways to accomplish this goal. In this case, an excellent choice is the $bilinear transformation$ defined by
+\[
+s \rightarrow c\frac{z-1}{z+1},\eqno{(3)}
+\]
+where $c$ is chosen to map one particular analog frequency to a particular digital frequency (other than dc or half the sampling rate, which are always mapped from dc and infinity in the $s$ plane, respectively). In this case, $c$ is well chosen for each section to map the break frequency of the section to the corresponding point on the digital frequency axis. The relation between analog frequency ωa and digital frequency $\omega_d$ follows immediately from Equation(3):
+\[
+\begin{aligned} 
+j\omega_{a} & = c \frac { e ^ { j \omega _ { d } T } - 1 } { e ^ { j \omega _ { d } T } + 1 }  = c \frac { e ^ { j \omega _ { d } T / 2 } \left( e ^ { j \omega _ { d } T / 2 } - e ^ { - j \omega _ { d } T / 2 } \right) } { e ^ { j \omega _ { d } T / 2 } \left( e ^ { j \omega _ { d } T / 2 } + e ^ { - j \omega _ { d } T / 2 } \right) } \\ & = j c \frac { \sin \left( \omega _ { d } T / 2 \right) } { \cos \left( \omega _ { d } T / 2 \right) }  = j c \tan \left( \omega _ { d } T / 2 \right).
+\end{aligned}\eqno{(4)}
+\]
+Thus, given a particular desired break-frequency $\omega_a = \omega_d = \omega_b$, we can set
+\[
+c = \omega_b\cot(\omega_bT/2).\eqno{(5)}
+\]
+
+It is easy to check that the bilinear transform gives a one-to-one, order-preserving(so we will obtain a first-order digital allpass for each first-order analog allpass), conformal map between the analog frequency axis  $ s=j\omega_a$ and the digital frequency axis  $ z=e^{j\omega_d T}$, where $ T$ is the sampling interval. Therefore, the amplitude response takes on exactly the same values over both axes, with the only defect being a frequency warping such that equal increments along the unit circle in the $z$ plane correspond to larger and larger bandwidths along the $j\omega$ axis in the $s$ plane. Some kind of frequency warping is obviously unavoidable in any one-to-one map because the analog frequency axis is infinite while the digital frequency axis is finite. The relation between the analog and digital frequency axes may be derived immediately from Equation (4). Only dc and one other finite frequency (chosen by setting $c$) are mapped without any warping error.
+
+Applying the bilinear transformation Equation (3) to the first-order analog allpass filter Equation (1) gives
+\[
+H _ { d } ( z ) = H _ { a } \left( c \frac { 1 - z ^ { - 1 } } { 1 + z ^ { - 1 } } \right) = \frac { c \left( \frac { 1 - z ^ { - 1 } } { 1 + z ^ { - 1 } } \right) - \omega _ { b } } { c \left( \frac { 1 - z ^ { - 1 } } { 1 + z ^ { - 1 } } \right) + \omega _ { b } } \triangleq \frac { p _ { d } - z ^ { - 1 } } { 1 - p _ { d } z ^ { - 1 } },\eqno{(6)}
+\]
+where we have denoted the pole of the digital allpass by
+\[
+p _ { d } \triangleq \frac { c - \omega _ { b } } { c + \omega _ { b } } = \frac { 1 - \tan \left( \omega _ { b } T / 2 \right) } { 1 + \tan \left( \omega _ { b } T / 2 \right) } \approx \frac { 1 - \omega _ { b } T / 2 } { 1 + \omega _ { b } T / 2 } \approx 1 - \omega _ { b } T.\eqno{(7)}
+\]
+\end{document}

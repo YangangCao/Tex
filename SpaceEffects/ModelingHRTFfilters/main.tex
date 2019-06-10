@@ -1,0 +1,90 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\date{March 5, 2019}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+\begin{document}
+
+\title{Modeling HRTF Filters}
+\maketitle 
+
+Modeling the structural properties of the system pinna–head–torso gives us the possibility to research spatial hearing. Much of the physical/geometric properties can be understood by careful analysis of the HRIRs, plotted as surfaces, functions of the variables time and azimuth, or time and elevation. This is the approach taken by Brown and Duda who came up with a model which can be structurally divided into three parts: (1) head shadow and ITD, (2) shoulder echo, and (3) pinna reflections.
+
+Starting from the approximation of the head as a rigid sphere that diffracts a plane wave, the shadowing effect can be effectively approximated by a first-order continuous-time system, i.e., a pole-zero couple in the Laplace complex plane:
+\[
+{s_{z}=\frac{-2 \omega_{0}}{\alpha(\theta)}} 
+\]
+\[
+s_{p}=-2 \omega_{0},
+\]
+where $\omega_0$ is related to the effective radius $a$ of the head and the speed of sound $c$ by
+\[
+\omega_{0}=\frac{c}{a}.
+\]
+The position of the zero varies with the azimuth $\theta$ according to the function
+\[
+\alpha(\theta)=1.05+0.95 \cos \left(\frac{\theta+\frac{\pi}{2}}{150^{\circ}} 180^{\circ}\right).
+\]
+The pole-zero couple can be directly translated into a stable IIR digital filter by bilinear transformation, and the resulting filter (with proper scaling) is
+\[
+H_{\mathrm{hs}}=\frac{\left(\omega_{0}+\alpha F_{s}\right)+\left(\omega_{0}-\alpha F_{s}\right) z^{-1}}{\left(\omega_{0}+F_{s}\right)+\left(\omega_{0}-F_{s}\right) z^{-1}}.
+\]
+The ITD can be obtained by simple delay in seconds as is the following function of the azimuth angle $\theta$:
+\[
+\tau_{\mathrm{h}}(\theta)=\left\{\begin{array}{ll}{-\frac{a}{c} \cos \left(\theta+\frac{\pi}{2}\right)} & {\text { if } 0 \leq\left|\theta+\frac{\pi}{2}\right|<\frac{\pi}{2}} \\ {\frac{a}{c}\left(\left|\theta+\frac{\pi}{2}\right|-\frac{\pi}{2}\right)} & {\text { if } \frac{\pi}{2} \leq\left|\theta+\frac{\pi}{2}\right|<\pi}\end{array}\right.
+\]
+
+The M-file implementing the head-shadowing filter as a time-domain HRIR is:
+\begin{lstlisting}
+function [output] = simpleHRIR(theta, Fs)
+% computes simplified HRTFs with only simple ITD-ILD approximations
+% theta is the azimuth angle in degrees
+% Fs is the sample rate
+
+theta = theta + 90;
+theta0 = 150;															
+alfa_min = 0.05;		
+c = 334; % speed of sound
+a = 0.08; % radius of head												
+w0 = c/a;
+input=zeros(round(0.003*Fs),1); 
+input(1)=1;
+alfa = 1+ alfa_min/2 + (1-alfa_min/2)* cos(theta/ theta0* pi);	
+B = [(alfa+w0/Fs)/(1+w0/Fs), (-alfa+w0/Fs)/(1+w0/Fs)];	
+% numerator of Transfer Function
+A = [1, -(1-w0/Fs)/(1+w0/Fs)];	                      
+% denominator of Transfer Function
+if (abs(theta) < 90)
+	gdelay = round(- Fs/w0*(cos(theta*pi/180) - 1));
+else
+	gdelay = round(Fs/w0*((abs(theta) - 90)*pi/180 + 1) );
+end
+out_magn = filter(B, A, input);
+output = [zeros(gdelay,1); out_magn(1:end-gdelay);  ];
+
+\end{lstlisting}
+
+The function simpleHRIR gives a rough approximation of HRIR of one ear with one direction. To obtain a HRIR for the left and right ears the same function has to be used with opposite values of argument theta.
+\end{document}

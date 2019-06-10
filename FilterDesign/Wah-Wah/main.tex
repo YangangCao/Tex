@@ -1,0 +1,55 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{draftwatermark} % 设置水印
+\SetWatermarkText{DNV Group} % 水印内容
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\date{February 20, 2019}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+\begin{document}
+
+\title{Wah-Wah Filter Design}
+\maketitle 
+The parametric filters discussed in the previous documents allow the time-varying control of the filter parameters gain, cut-off frequency, and bandwidth or Q factor. Special applications of time-varying audio filters play important roles in music signal processing, one of them is wah-wah filter.
+
+The wah-wah effect is produced mostly by foot-controlled signal processors containing a bandpass filter with variable center frequency and a small bandwidth. Moving the pedal back and forth changes the bandpass center frequency. The “wah-wah” effect is then mixed with the direct signal. This effect leads to a spectrum shaping similar to speech and produces a speech-like “wah-wah” sound. 
+
+Instead of manually changing the center frequency, it is also possible to let a low-frequency oscillator control the center frequency, which in turn is controlled based on parameters derived from the input signal. Such an effect is called an auto-wah filter. If the effect is combined with a low-frequency amplitude variation, which produces a tremolo, the effect is denoted a tremolo-wah filter. Replacing the unit delay in the bandpass filter by an M tap delay leads to the M-fold wah-wah filter. M bandpass filters are spread over the entire spectrum and simultaneously change their center frequency. Effects with M-fold wah-wah filter are shown in following table.
+\begin{center}
+	\begin{tabular}{cccc}
+		\toprule  %添加表格头部粗线
+		& {$M$}&{$Q^{-1}/f_m$}&{$\Delta f$}\\
+		\midrule  %添加表格中横线
+		Wah-Wah&1& --/3kHz & 200Hz\\
+		$M$-fold Wah-Wah& 5-20 & 0.5/-- & 200-500Hz\\
+		Bell effect&100&0.5/--&100Hz\\
+		\bottomrule %添加表格底部粗线
+	\end{tabular}
+\end{center}
+Based on the measured shape of the amplitude response (a bandpass-resonator characteristic), and knowledge (from circuit schematics), the transfer function of the second-order bandpass can be presumed to be of the form
+\[
+H(s) = g\frac{s-\xi}{\left(\frac{s}{\omega_r}\right)^2+\frac{2}{Q}\left(\frac{s}{\omega_r}\right)+1},
+\]
+where $g$ is an overall gain factor, $\xi$ is a real zero at or near dc (the other being at infinity), $\omega_r$ is the pole resonance frequency, and $Q$ is the so-called “quality factor” of the resonator. The measurements reveal that $\omega_r$, $Q$, and $g$ all vary significantly with pedal angle $\theta$.Good choices for these functions are as shown in following code block, where the controlling wah variable is the pedal-angle θ normalized to a [0, 1] range.
+
+\end{document}

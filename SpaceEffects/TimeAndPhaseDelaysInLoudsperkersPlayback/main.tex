@@ -1,0 +1,90 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\date{March 5, 2019}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+\begin{document}
+
+\title{Time and Phase Delay in Loudspeaks Playback}
+\maketitle 
+When a constant delay is applied to one loudspeaker in stereophonic listening, virtual sources with transient signals are perceived to migrate towards the loudspeaker that radiates the earlier sound signal. Maximal effect is achieved asymptotically when the delay is approximately $1.0$ ms or more. However, the effect depends on the signal used. With continuous signals containing low frequencies, the effect is much less prominent than with modulated signals containing high frequencies.
+
+In such processing the phase or time delays between the loudspeakers are turned at low frequencies into level differences between the ears, and at high frequencies to time differences between the ears. This all makes the virtual source direction depend on frequency. The produced binaural cues vary with frequency, and different cues suggest different directions for virtual sources. It may thus generate a “spread” perception of direction of sound, which is desirable in some cases. The effect is dependent on listening position. For example, if the sound signal is delayed by 1 ms in one loudspeaker, the listener can compensate the delay by moving 30 cm towards the delayed loudspeaker.
+\begin{lstlisting}
+% Creating spatially spread virtual source by delaying one channel
+
+Fs=44100;
+% Delay parameter for channel 1 in seconds
+delay=0.005; 
+% Corresponding number of delayed samples
+delaysamp=round(delay*Fs)
+% Signal to be used
+signal=mod([1:20000]',400)/400; 
+signal(1:2000)=signal(1:2000).*[1:2000]'/2000; % Fade in
+% Delaying first channel
+loudsp_sig=[[zeros(delaysamp,1); signal(1:end-delaysamp)] signal];
+% Play audio with loudspeakers
+soundsc(loudsp_sig,Fs);
+\end{lstlisting}
+
+A special case of a phase difference in stereophonic reproduction is the use of antiphasic signals in the loudspeakers. In such a technique, the same signal is applied to both loudspeakers, however, the polarity of the other loudspeaker signal is inverted, which produces a constant $180^{\circ}$ phase difference between the signals at all frequencies. This changes the perceived sound color, and also spreads the virtual sources. Depending on the listening position, the low frequencies may be cancelled out. At higher frequencies this effect is milder. This effect is also milder in rooms with longer reverberation. The directional perception of the antiphasic virtual source depends on the listening position. In the sweet spot, the high frequencies are perceived to be at the center, and low frequencies in random directions. Outside the sweet spot, the direction is either random, or towards the closest loudspeaker. In the language of professional audio engineers this effect is called “phasy”, or “there is phase error in here”.
+\begin{lstlisting}
+% Create a spread virtual source by inverting phase in one loudspeaker
+
+Fs=44100;
+signal=mod([1:20000]',400)/400; %signal to be used
+% Inverting one loudspeaker signal
+loudsp_sig=[-signal signal];
+% Play audio out with two loudspeakers
+soundsc(loudsp_sig,Fs);
+\end{lstlisting}
+
+A further method to spread the virtual source between the loudspeakers is to change the phase spectrum of the sound differently at different frequencies. A basic method is to convolve the signal for the loudspeakers with two different short bursts of white noise. Another method is to apply a different delay to different frequencies. This effectively spreads out the virtual source between the loudspeakers, and the effect is audible over a large listening area. Unfortunately, the processing changes the temporal response slightly, which may be audible as temporal smearing of transients of the signal.
+
+Below is a example creating spread virtual sources for stereophonic listening by convolving the sound with short noise bursts:
+\begin{lstlisting}
+% Example how to spread a virtual source over N loudspeakers
+
+Fs=44100;
+signal=mod([1:20000]',400)/400; % Signal to be used
+NChan=2; % Number of channels
+% Generate noise bursts for all channels
+nois=rand(round(0.05*Fs),NChan)-0.5;
+% Convolve signal with bursts
+loudsp_sig=conv(signal,nois(:,1));
+for i=2:NChan
+loudsp_sig=[loudsp_sig conv(signal,nois(:,i))];
+end
+if NChan == 2
+% Play audio out with  loudspeakers
+soundsc(loudsp_sig,Fs);
+else 
+% Write file to disk
+loudsp_sig=loudsp_sig/max(max(loudsp_sig))*0.9;
+wavwrite([loudsp_sig],Fs,16,'burstex.wav');
+end
+\end{lstlisting}
+
+\end{document}

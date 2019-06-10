@@ -1,0 +1,183 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\newcommand{\degree}{^\circ}
+\begin{document}
+
+\title{State and Output Equations of Filters}
+\maketitle 
+\section{First-Order Allpass Filter}
+The difference equations of first-order allpass filter are: 
+\[
+x(n) = u(n) - cx(n-1)
+\]
+\[
+y(n) = cx(n) + x(n-1)
+\]
+and corresponding state and output equations are:
+\[
+x(n) = -cx(n-1) +u(n)
+\]
+\[
+y(n) = (1-c^2)x(n-1) + cu(n)
+\]
+\section{First-Order Lowpass Filter}
+The difference equations of first-order lowpass filter are: 
+\[
+x(n) = u(n) - cx(n-1)
+\]
+\[
+y(n) = \frac{1+c}{2}x(n) + \frac{1+c}{2}x(n-1)
+\]
+and corresponding state and output equations are:
+\[
+x(n) = -cx(n-1) +u(n)
+\]
+\[
+y(n) = \frac{1-c^2}{2}x(n-1) + \frac{1+c}{2}u(n)
+\]
+\section{First-Order Highpass Filter}
+The difference equations of first-order highpass filter are: 
+\[
+x(n) = u(n) - cx(n-1)
+\]
+\[
+y(n) = \frac{1-c}{2}x(n) + \frac{c-1}{2}x(n-1)
+\]
+and corresponding state and output equations are:
+\[
+x(n) = -cx(n-1) +u(n)
+\]
+\[
+y(n) = \frac{c^2-1}{2}x(n-1) + \frac{1-c}{2}u(n)
+\]
+\section{First-Order Low Frenquency Shelving Filter}
+The difference equations of first-order low frequency shelving filter are: 
+\[
+x(n) = u(n) - c_{B/C}x(n-1)
+\]
+\[
+y_1(n) = c_{B/C}x(n) + x(n-1)
+\]
+\[
+y(n) = \frac{H_0}{2}[u(n) + y_1(n)] + u(n).
+\]
+and corresponding state and output equations are:
+\[
+x(n) = -c_{B/C}x(n-1) + u(n)
+\]
+\[
+y(n) = \frac{H_0}{2}(1-c^2)x(n-1) + [\frac{H_0}{2}(1+c)+1]u(n)
+\]
+\section{First-Order High Frenquency Shelving Filter}
+The difference equations of first-order high frequency shelving filter are: 
+\[
+x(n) = u(n) - c_{B/C}x(n-1)
+\]
+\[
+y_1(n) = c_{B/C}x(n) + x(n-1)
+\]
+\[
+y(n) = \frac{H_0}{2}[u(n) - y_1(n)] + u(n).
+\]
+and corresponding state and output equations are:
+\[
+x(n) = -c_{B/C}x(n-1) + u(n)
+\]
+\[
+y(n) = \frac{H_0}{2}(c^2-1)x(n-1) + [\frac{H_0}{2}(1-c)+1]u(n)
+\]
+\section{Second-Order Allpass Filter}
+The difference equations of second-order allpass filter are: 
+\[
+x(n) = u(n) - d(1-c)x(n-1) + cx(n-2)
+\]
+\[
+y(n) = -cx(n) + d(1-c)x(n-1) + x(n-2),
+\]
+and corresponding state and output equations are:
+\[
+\begin{bmatrix}x(n)\\x(n-1)\end{bmatrix} = \begin{bmatrix}
+-d(1-c)&c\\
+1&0
+\end{bmatrix}
+\begin{bmatrix}x(n-1)\\x(n-2)\end{bmatrix} + \begin{bmatrix}1\\0\end{bmatrix}
+u(n)\]
+\[
+y(n) = \begin{bmatrix}(1-c^2)d&1-c^2\end{bmatrix}
+\begin{bmatrix}x(n-1)\\x(n-2)\end{bmatrix} + (-c)u(n)
+\]
+\section{Second-Order Bandpass Filter}
+The difference equations of second-order bandpass filter are: 
+\[
+x(n) = u(n) - d(1-c)x(n-1) + cx(n-2)
+\]
+\[
+y(n) = \frac{1+c}{2}x(n) - \frac{1+c}{2}x(n-2),
+\]
+and corresponding state and output equations are:
+\[
+\begin{bmatrix}x(n)\\x(n-1)\end{bmatrix} = \begin{bmatrix}
+-d(1-c)&c\\
+1&0
+\end{bmatrix}
+\begin{bmatrix}x(n-1)\\x(n-2)\end{bmatrix} + \begin{bmatrix}1\\0\end{bmatrix}
+u(n)\]
+\[
+y(n) = \begin{bmatrix}\frac{d(c^2-1)}{2}&\frac{c^2-1}{2}\end{bmatrix}
+\begin{bmatrix}x(n-1)\\x(n-2)\end{bmatrix} + \frac{1+c}{2}u(n)
+\]
+\section{Second-Order Bandreject Filter}
+The difference equations of second-order bandreject filter are: 
+\[
+x(n) = u(n) - d(1-c)x(n-1) + cx(n-2)
+\]
+\[
+y(n) = \frac{1-c}{2}x(n) + d(1-c)x(n-1) + \frac{1-c}{2}x(n-2),
+\]
+and corresponding state and output equations are:
+\[
+\begin{bmatrix}x(n)\\x(n-1)\end{bmatrix} = \begin{bmatrix}
+-d(1-c)&c\\
+1&0
+\end{bmatrix}
+\begin{bmatrix}x(n-1)\\x(n-2)\end{bmatrix} + \begin{bmatrix}1\\0\end{bmatrix}
+u(n)\]
+\[
+y(n) = \begin{bmatrix}\frac{d(1-c^2)}{2}&\frac{1-c^2}{2}\end{bmatrix}
+\begin{bmatrix}x(n-1)\\x(n-2)\end{bmatrix} + \frac{1-c}{2}u(n)
+\]
+\section{Second-Order Peak Filter}
+The difference equations of second-order peak filter are: 
+\[
+x(n) = u(n) - d(1 - c_{B/C})x(n - 1) + c_{B/C}x(n - 2)
+\]
+\[
+y_1(n) = -c_{B/C}x(n) + d(1 - c_{B/C})x(n - 1) + x(n - 2)
+\]
+\[
+y(n) = \frac{H_0}{2}[u(n) - y_1(n)] + u(n).
+\]
+and corresponding state and output equations are:
+\[
+\begin{bmatrix}x(n)\\x(n-1)\end{bmatrix} = \begin{bmatrix}
+-d(1-c_{B/C})&c_{B/C}\\
+1&0
+\end{bmatrix}
+\begin{bmatrix}x(n-1)\\x(n-2)\end{bmatrix} + \begin{bmatrix}1\\0\end{bmatrix}
+u(n)\]
+\[
+y(n) = \begin{bmatrix}\frac{H_0}{2}(c_{B/C}^2-1)d&\frac{H_0}{2}(c_{B/C}^2-1)\end{bmatrix}
+\begin{bmatrix}x(n-1)\\x(n-2)\end{bmatrix} + [\frac{H_0}{2}(1+c_{B/C})+1]u(n)
+\]
+\end{document}

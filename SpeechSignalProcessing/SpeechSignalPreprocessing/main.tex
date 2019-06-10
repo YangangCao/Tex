@@ -1,0 +1,206 @@
+\documentclass[10pt,a4paper,oneside]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots} % for matlab2tikz
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+%\documentclass[aspectratio=169]{beamer}
+\usepackage[english]{babel}
+
+% 加导航条
+%\useoutertheme[width=3\baselineskip,right]{sidebar}
+% 目录标数字
+\setbeamertemplate{section in toc}[sections numbered] 
+% 无序列表用实心点
+\setbeamertemplate{itemize item}{$\bullet$}
+% 设置每页标题格式
+\setbeamertemplate{frametitle}
+{\vspace{-0.5cm}
+	\insertframetitle
+	\vspace{-0.5cm}}
+% 去掉下面没用的导航条
+\setbeamertemplate{navigation symbols}{}
+% 设置页脚格式
+\makeatother
+\setbeamertemplate{footline}
+{
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortauthor
+		\end{beamercolorbox}
+		
+		\begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle\hspace*{13em}
+			\insertframenumber{} / \inserttotalframenumber\hspace*{0ex}
+	\end{beamercolorbox}}
+	
+	\vskip0pt%
+}
+\makeatletter
+
+
+% 定义颜色
+%\definecolor{alizarin}{rgb}{0.82, 0.1, 0.26} % 红色
+%\definecolor{DarkFern}{HTML}{407428} % 绿色
+%\colorlet{main}{DarkFern!100!white} % 第一种设置方法
+%\colorlet{main}{red!70!black} % 第二种设置方法
+\definecolor{bistre}{rgb}{0.24, 0.17, 0.12} % 黑色
+\definecolor{mygrey}{rgb}{0.52, 0.52, 0.51} % 灰色
+\colorlet{main}{green!50!black}
+\colorlet{text}{bistre!100!white}
+
+% 不同元素指定不同颜色，fg是本身颜色，bg是背景颜色，!num!改变数值提供渐变色
+\setbeamercolor{title}{fg=text}
+\setbeamercolor{frametitle}{fg=main}
+\setbeamercolor{section in toc}{fg=text}
+\setbeamercolor{normal text}{fg=text}
+\setbeamercolor{block title}{fg=main,bg=mygrey!14!white}
+\setbeamercolor{block body}{fg=black,bg=mygrey!10!white}
+\setbeamercolor{qed symbol}{fg=main} % 证明结束后的框颜色
+\setbeamercolor{math text}{fg=black}
+% 设置页脚对应位置颜色
+\setbeamercolor{author in head/foot}{fg=black, bg=mygrey!5!white}
+\setbeamercolor{title in head/foot}{fg=black, bg=mygrey!5!white}
+\setbeamercolor{structure}{fg=main, bg=mygrey!10!white} % 设置sidebar颜色
+
+% 左右页间距的排版
+\def\swidth{1cm}
+\setbeamersize{sidebar width right=\swidth}
+\setbeamersize{sidebar width left=\swidth}
+\setbeamerfont{title in sidebar}{size=\scriptsize}
+\setbeamerfont{section in sidebar}{size=\tiny}
+
+
+%-------------------正文-------------------------%
+
+\author{Yangang Cao}
+\title{Speech Signal Preprocessing}
+\date{April 12, 2019}
+
+\begin{document}
+	
+\frame[plain]{\titlepage}
+
+\begin{frame}[fragile]
+\vspace{0.5cm}
+{\bfseries Speech Signal Detrend}
+\vspace{0.1cm}
+\begin{lstlisting}
+ y = detrend(x);
+ % Bulit-in function in MATLAB
+ % Remove linear trend
+ % x: Signal with linear trend
+ % y: Signal without linear trend
+ \end{lstlisting}
+
+ \begin{lstlisting}
+ function [y,xtrend] = detrendN(x, fs, m)
+ % Remove linear and nonlinear trend
+ % fs: Sample rate
+ % m: Highest fitting order
+ x = x(:); 
+ N = length(x);
+ t = (0:N-1)'/fs; % Solve time sequence
+ a = polyfit(t, x, m); % Returns coefficients for a polynomial x(t) of degree m
+ xtrend = polyval(a, t); % Returns polynomial of coefficients a evaluated at t
+ y = x - xtrend;
+ end
+ \end{lstlisting}
+
+\end{frame}
+
+\begin{frame}
+\vspace{0.5cm}
+\input{detrend.tex}
+\end{frame}
+
+
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries Digital Filters Parameters}
+\begin{itemize}
+\item $W_p$: Passband cutoff frequency, 0<$W_p$<1
+\item $W_s$: Stopband cutoff frequency, 0<$W_s$<1
+\item $R_p$: Passband ripple factor
+\item $R_s$: Stopband ripple factor
+\end{itemize}
+{\bfseries Digital Filters Calculating}
+\begin{itemize}
+	\item{Butterworth}: [n, Wn] = buttord(Wp, Ws, Rp, Rs);
+	\newline [m, Wn] = butter(n, Wn, 'ftype')
+	\item Chebyshev Type I: [n, Wn] = cheb1ord(Wp, Ws, Rp, Rs);  
+	[n, Wn] = chebv1(n, Rp, Wn, 'ftype')
+	\item Chebyshev Type I: [n, Wn] = cheb2ord(Wp, Ws, Rp, Rs); 
+	[n, Wn] = chebv2(n, Rp, Wn, 'ftype')
+	\item Chebyshev Type I: [n, Wn] = ellipord(Wp, Ws, Rp, Rs); 
+	[n, Wn] = ellip(n, Rp, Wn, 'ftype')
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+\vspace{0.5cm}
+{\bfseries MATALB Code Example} 
+\vspace{0.5cm}
+\begin{lstlisting}
+% Elliptic filter design
+clc
+clear all
+fs=8000;
+wp=550*2/fs;
+ws=500*2/fs;        
+rp=3;
+rs=80;
+Nn=512; % Number of evaluation points
+[n,wn]=ellipord(wp,ws,rp,rs);
+[b,a]=ellip(n,rp,rs,wn);
+freqz(b,a,Nn,fs);
+\end{lstlisting}
+\end{frame}
+\begin{frame}
+\vspace{1.5cm}
+{\bfseries MATALB Plot Example} 
+\input{freqz.tex}
+\end{frame}
+\begin{frame}[fragile]
+\vspace{0.5cm}
+{\bfseries Pre-emphasising} 
+\vspace{0.5cm}
+\\Enhancing component and SNR in high frequency when transmission
+\begin{lstlisting}
+y = filter([1,-0.95],1,x);  
+\end{lstlisting}
+\vspace{0.5cm}
+{\bfseries  Pre-emphasising Removal} 
+\begin{lstlisting}
+y = filter(1,[1,-0.95],x);  
+\end{lstlisting}
+\end{frame}
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries Pre-emphasising Example} 
+\input{pre_emphasis.tex}
+\end{frame}
+
+
+\end{document}

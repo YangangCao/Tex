@@ -1,0 +1,195 @@
+\documentclass[10pt,a4paper,oneside]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots} % for matlab2tikz
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+%\documentclass[aspectratio=169]{beamer}
+\usepackage[english]{babel}
+
+% 加导航条
+%\useoutertheme[width=3\baselineskip,right]{sidebar}
+% 目录标数字
+\setbeamertemplate{section in toc}[sections numbered] 
+% 无序列表用实心点
+\setbeamertemplate{itemize item}{$\bullet$}
+% 设置每页标题格式
+\setbeamertemplate{frametitle}
+{\vspace{-0.5cm}
+	\insertframetitle
+	\vspace{-0.5cm}}
+% 去掉下面没用的导航条
+\setbeamertemplate{navigation symbols}{}
+% 设置页脚格式
+\makeatother
+\setbeamertemplate{footline}
+{
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortauthor
+		\end{beamercolorbox}
+		
+		\begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle\hspace*{13em}
+			\insertframenumber{} / \inserttotalframenumber\hspace*{0ex}
+	\end{beamercolorbox}}
+	
+	\vskip0pt%
+}
+\makeatletter
+
+
+% 定义颜色
+%\definecolor{alizarin}{rgb}{0.82, 0.1, 0.26} % 红色
+%\definecolor{DarkFern}{HTML}{407428} % 绿色
+%\colorlet{main}{DarkFern!100!white} % 第一种设置方法
+%\colorlet{main}{red!70!black} % 第二种设置方法
+\definecolor{bistre}{rgb}{0.24, 0.17, 0.12} % 黑色
+\definecolor{mygrey}{rgb}{0.52, 0.52, 0.51} % 灰色
+\colorlet{main}{green!50!black}
+\colorlet{text}{bistre!100!white}
+
+% 不同元素指定不同颜色，fg是本身颜色，bg是背景颜色，!num!改变数值提供渐变色
+\setbeamercolor{title}{fg=text}
+\setbeamercolor{frametitle}{fg=main}
+\setbeamercolor{section in toc}{fg=text}
+\setbeamercolor{normal text}{fg=text}
+\setbeamercolor{block title}{fg=main,bg=mygrey!14!white}
+\setbeamercolor{block body}{fg=black,bg=mygrey!10!white}
+\setbeamercolor{qed symbol}{fg=main} % 证明结束后的框颜色
+\setbeamercolor{math text}{fg=black}
+% 设置页脚对应位置颜色
+\setbeamercolor{author in head/foot}{fg=black, bg=mygrey!5!white}
+\setbeamercolor{title in head/foot}{fg=black, bg=mygrey!5!white}
+\setbeamercolor{structure}{fg=main, bg=mygrey!10!white} % 设置sidebar颜色
+
+% 左右页间距的排版
+\def\swidth{1cm}
+\setbeamersize{sidebar width right=\swidth}
+\setbeamersize{sidebar width left=\swidth}
+\setbeamerfont{title in sidebar}{size=\scriptsize}
+\setbeamerfont{section in sidebar}{size=\tiny}
+
+
+%-------------------正文-------------------------%
+
+\author{Yangang Cao}
+\title{Basic Acoustic Concepts and Parameters}
+\date{April 10, 2019}
+
+\begin{document}
+	
+\frame[plain]{\titlepage}
+
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries About Pressure:}
+\vspace{0.3cm}
+\begin{itemize}
+	\item  {\bfseries Sound Pressure (Pa):}  Pressure of sound wave
+	\item {\bfseries Effective Sound Pressure (Pa):} 
+	\[
+	p_e = \sqrt{\frac{1}{N}\sum_{n=1}^{N}x^2}
+	\]
+	\item {\bfseries Sound Pressure Level (dB):}
+	\[
+	L_p = 20\lg\frac{p_e}{p_{ref}}
+	\]
+	and
+	\[
+	p_{ref} = 2 \times 10^{-5}Pa
+	\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries About Intensity:}
+\vspace{0.5cm}
+\begin{itemize}
+	\item {\bfseries Sound Intensity (W/m$^2$):} Power of sound wave per unit area
+	\item {\bfseries Sound Intensity Level (dB):} 
+	\[
+	L_I = 10\lg\frac{I}{I_0}
+	\]
+	and
+	\[
+	I_0 = 1 \times 10^{-12}W/m^2
+	\]
+	
+\end{itemize}
+\end{frame}
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries Relation Between Sound Pressure and Sound Intensity:} 
+\vspace{0.3cm}
+
+	\[
+	I = \frac{P^2}{\rho c}
+	\]
+\begin{itemize}
+\item $\rho$ (kg/m$^3$): Density of air
+\item $c$ (m/s): Speed of sound in air
+\end{itemize}
+\vspace{0.3cm}
+At standard atmospheric pressure and 20 degrees Celsius:
+\[
+\rho c = 408 Pa\cdot s/m
+\]
+also named "characteristic impedance"
+\end{frame}
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries About Loudness:} 
+\vspace{0.5cm}
+\begin{itemize}
+\item{\bfseries Loudness (Son):} 1 Son = Loudness of pure sound which sound pressure level is 40dB and frequency is 1kHz.
+\item{\bfseries Loudness Level (phon):} 0 phon = Loudness level of pure sound which sound pressure level is 0dB and frequency is 1kHz
+\end{itemize}
+\end{frame}
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries According to ISO0226-2003:} 
+\[
+L_p = (\frac{10}{\alpha _f}\cdot\lg A_f - L_U + 94)
+\]
+and
+\[
+A_f = 4.47 \times 10^{-3} \times (10^{0.0025L_N}-1.15)+[0.4\times10^{(\frac{T_f+L_U}{10}-9)}]^{\alpha_f}
+\]
+\begin{itemize}
+	\item $L_p$ (dB): Sound pressure level
+	\item  $L_U$ (dB): Amplitude of linear transfer function based on 1000Hz
+	\item $L_N$ (dB): Loudness level of pure sound
+	\item $T_f$ (dB): Hearing threshold
+	\item $\alpha_f$ (1): Loudness perception index
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\vspace{0.5cm}
+\input{equal-loudness_contours.tex}
+\end{frame}
+\end{document}

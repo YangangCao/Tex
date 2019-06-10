@@ -1,0 +1,188 @@
+\documentclass[10pt,a4paper,oneside]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots} % for matlab2tikz
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+%\documentclass[aspectratio=169]{beamer}
+\usepackage[english]{babel}
+
+% 加导航条
+%\useoutertheme[width=3\baselineskip,right]{sidebar}
+% 目录标数字
+\setbeamertemplate{section in toc}[sections numbered] 
+% 无序列表用实心点
+\setbeamertemplate{itemize item}{$\bullet$}
+% 设置每页标题格式
+\setbeamertemplate{frametitle}
+{\vspace{-0.5cm}
+	\insertframetitle
+	\vspace{-0.5cm}}
+% 去掉下面没用的导航条
+\setbeamertemplate{navigation symbols}{}
+% 设置页脚格式
+\makeatother
+\setbeamertemplate{footline}
+{
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortauthor
+		\end{beamercolorbox}
+		
+		\begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle\hspace*{13em}
+			\insertframenumber{} / \inserttotalframenumber\hspace*{0ex}
+	\end{beamercolorbox}}
+	
+	\vskip0pt%
+}
+\makeatletter
+
+
+% 定义颜色
+%\definecolor{alizarin}{rgb}{0.82, 0.1, 0.26} % 红色
+%\definecolor{DarkFern}{HTML}{407428} % 绿色
+%\colorlet{main}{DarkFern!100!white} % 第一种设置方法
+%\colorlet{main}{red!70!black} % 第二种设置方法
+\definecolor{bistre}{rgb}{0.24, 0.17, 0.12} % 黑色
+\definecolor{mygrey}{rgb}{0.52, 0.52, 0.51} % 灰色
+\colorlet{main}{green!50!black}
+\colorlet{text}{bistre!100!white}
+
+% 不同元素指定不同颜色，fg是本身颜色，bg是背景颜色，!num!改变数值提供渐变色
+\setbeamercolor{title}{fg=text}
+\setbeamercolor{frametitle}{fg=main}
+\setbeamercolor{section in toc}{fg=text}
+\setbeamercolor{normal text}{fg=text}
+\setbeamercolor{block title}{fg=main,bg=mygrey!14!white}
+\setbeamercolor{block body}{fg=black,bg=mygrey!10!white}
+\setbeamercolor{qed symbol}{fg=main} % 证明结束后的框颜色
+\setbeamercolor{math text}{fg=black}
+% 设置页脚对应位置颜色
+\setbeamercolor{author in head/foot}{fg=black, bg=mygrey!5!white}
+\setbeamercolor{title in head/foot}{fg=black, bg=mygrey!5!white}
+\setbeamercolor{structure}{fg=main, bg=mygrey!10!white} % 设置sidebar颜色
+
+% 左右页间距的排版
+\def\swidth{1cm}
+\setbeamersize{sidebar width right=\swidth}
+\setbeamersize{sidebar width left=\swidth}
+\setbeamerfont{title in sidebar}{size=\scriptsize}
+\setbeamerfont{section in sidebar}{size=\tiny}
+
+
+%-------------------正文-------------------------%
+
+\author{Yangang Cao}
+\title{Speech Signal Generation Modeling}
+\date{April 11, 2019}
+
+\begin{document}
+	
+\frame[plain]{\titlepage}
+
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries Sound Source Power:}
+\vspace{0.3cm}
+\begin{itemize}
+	\item  {\bfseries Periodic pulse:} produce vowels (voiced) -- a
+	\item {\bfseries Random noise:} produce fricatives (unvoiced) -- th
+	\item {\bfseries Impulse:} produce plosives (unvoiced) -- h
+\end{itemize}
+\vspace{0.5cm}
+{\bfseries However, the real satitution is complicated}\\
+such as:
+\begin{itemize}
+	\item  {\bfseries z:} voiced fricatives
+	\item {\bfseries b:} unvoiced plosives
+	\item {\bfseries m:} nasals
+\end{itemize}
+and so on
+\end{frame}
+
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries Excitation Model:}
+\vspace{0.1cm}
+\[
+g[n] = (\beta^{-n}u[-n])* (\beta^{-n}u[-n])
+\]
+corresponding z transformation:
+\[
+ G(z)=\frac{1}{(1-\beta z)^2}
+\]
+\end{frame}
+
+
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries Track Model:} 
+\vspace{0.3cm}
+\[
+V(z)=\frac{G}{1-\sum_{k=1}^{N} a_{k} z^{-k}}=\prod_{i=1}^{M} \frac{a_{i}}{1-b_{i} z^{-1}-c_{i} z^{-2}}
+\]
+and
+\[
+c_{i}=-e^{-2 \pi B_{i} T}
+\]
+\[
+b_{i}=2 e^{-\pi B_{i} T} \cos \left(2 \pi F_{i} T\right)
+\]
+\[
+a_{i}=1-b_{i}-c_{i}
+\]
+\[
+G=a_{1} \cdot a_{2} \cdot a_{3} \cdots \cdots a_{M}
+\]
+\end{frame}
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries Radiant Model:} 
+\vspace{0.5cm}
+\[
+\begin{aligned} R(z) &= 1 - \alpha z^{-1} \\&=\frac{1}{\sum_{k=0}^{\infty} a^{k} z^{-k}} \\ &=\frac{1}{\prod_{k=0}^{\infty}\left(1-b_{k} z^{-1}\right)} \end{aligned}
+\]
+\end{frame}
+\begin{frame}
+\vspace{0.5cm}
+{\bfseries All-Pole Model of Speech Signal} 
+\begin{itemize}
+	\item  {\bfseries Periodic pulse:} 
+	\[
+	X_v(z) = A_vG(z)V(z)R(z)
+	\]
+	\item {\bfseries Random noise:} 
+	\[
+	X_n(z) = A_nU(z)V(z)R(z)
+	\]
+	\item {\bfseries Impulse:} 
+	\[
+	X_i(z)=A_iV(z)R(z)
+	\]
+\end{itemize}
+\end{frame}
+
+
+\end{document}

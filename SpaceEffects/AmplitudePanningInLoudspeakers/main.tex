@@ -1,0 +1,77 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+\date{March 5, 2019}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+\begin{document}
+
+\title{Amplitude Panning in Loudspeakers}
+\maketitle 
+Amplitude panning is the most frequently used virtual-source-positioning technique. In it a sound signal is applied to loudspeakers with different amplitudes, which can be formulated as
+\[
+x_{i}(t)=g_{i} x(t), \quad i=1, \ldots, N,
+\]
+where $x_i(t)$ is the signal to be applied to loudspeaker $i$, $g_i$ is the gain factor of the corresponding channel, $N$ is the number of loudspeakers, and $t$ is the time. The listener perceives a virtual source, the direction of which is dependent on the gain factors.
+
+If the listener is located equally distant from the loudspeakers, the panning law estimates the perceived direction $\theta$ from the gain factors of loudspeakers. The estimated direction is called the panning direction or panning angle. It has been found that amplitude panning provides consistent ITD cues up to 1.1 kHz, and roughly consistent ILD cues above 2 kHz for a listener in the best listening position. The level differences between the loudspeakers are changed a bit surprisingly to phase differences between the ears, which is due to the fact that the sound arrives from both loudspeakers to both ears, which is called cross-talk. This effect is valid at low frequencies. At high frequencies, the level differences of the loudspeakers turn into level differences due to lack of the cross-talk caused by the shadowing of the head.
+
+There exist many published methods to estimate the perceived direction. In practice, all the proposed methods are equally good for audio effects, and the tangent law by Bennett et al. it is forulated as
+\[
+\frac{\tan \theta}{\tan \theta_{0}}=\frac{g_{1}-g_{2}}{g_{1}+g_{2}},
+\]
+where $\theta_{0}$ is $30^{\circ}$ and which has been found to estimate perceived direction best in listening tests in anechoic listening.
+
+The panning laws set only the ratio between the gain factors. To prevent undesired changes in loudness of the virtual source depending on panning direction, the sum-of-squares of the gain
+factors should be normalized:
+\[
+\sqrt{\sum_{n=1}^{N} g_{n}^{2}}=1.
+\]
+This normalization equation is used in real rooms with some reverberation. Depending on listening room acoustics, different normalization rules may be used.
+
+The presented analysis is valid only if the loudspeakers are equidistant from the listener, and if the base angle is not larger than about 60◦. This defines the best listening area where the virtual sources are localized between the loudspeakers. The area is located around the axis of symmetry of the setup, as shown in Figure 5.2. When the listener moves away from the area, the virtual source is localized towards the nearest loudspeaker which emanates a considerable amount of sound, due to the precedence effect.
+
+In principle, the amplitude-panning method creates a comb-filter effect in the sound spectrum, as the same sound arrives from both loudspeakers to each ear. However, this effect is relatively mild, and when heard in a normal room, the room reverberation smooths the coloring effect prominently. The sound color is also very similar when heard in different positions in the room. The lack of prominent coloring and the relatively robust directional effect provided by it are very probably the reasons why amplitude panning is included in all mixing consoles as “panpot” control, which makes it the most widely used technique to position virtual sources.
+
+\begin{lstlisting}
+% Stereophonic panning example with tangent law
+Fs = 44100;
+theta = -20; % Panning direction
+lsbase = 30; % Half of opening angle of loudspeaker pair
+
+theta = theta / 180 * pi;
+lsbase = lsbase / 180 * pi; % Moving to radians
+
+% Computing gain factors with tangent law
+g(2) = 1; % initial value has to be one
+g(1) = -(tan(theta)-tan(lsbase)) / (tan(theta)+tan(lsbase)+eps);
+
+g = g / sqrt(sum(g.^2)); % Normalizing the sum-of-squares
+signal = mod([1:20000]',200) / 200; % Signal to be panned
+loudsp_sig = [signal*g(1) signal*g(2)]; % Actual panning
+soundsc(loudsp_sig,Fs); % Play audio out with two loudspeakers
+
+
+\end{lstlisting}
+\end{document}

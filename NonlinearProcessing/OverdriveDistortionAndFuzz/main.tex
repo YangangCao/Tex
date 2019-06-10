@@ -1,0 +1,96 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{pgfplots}
+\usepackage{draftwatermark} % 设置水印
+\SetWatermarkText{DNV Group} % 水印内容
+\usepackage{tikz} % system block diagram
+\usepackage{textcomp}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{shapes,arrows} % system block diagram
+\usepackage{booktabs}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % matlab code block
+\author{Yangang Cao}
+
+\date{March 1, 2019}
+\newcommand{\degree}{^\circ}
+\tikzset{
+	delay/.style    = {draw, thick, rectangle, minimum height = 3em,
+		minimum width = 3em},
+	sum/.style      = {draw, circle, node distance = 2cm}, 
+	prod/.style     = {draw, circle, node distance = 2cm},
+	input/.style    = {coordinate}, % Input
+	output/.style  = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\product}{$\displaystyle \times$}
+\newcommand{\delay}{\large$z^{-1}$}
+\begin{document}
+
+\title{Overdrive and Distortion}
+\maketitle 
+As pointed out in the section on valve simulation, the distorted electric guitar is a central part of rock music. In addition to the guitar amplifier as a major sound effect device, several stomp boxes (foot-operated pedals) have been used by guitar players for the creation of their typical guitar sound. Guitar heroes like Jimi Hendrix have made use of several small analog effect devices to achieve their unmistakable sound. Most of these effect devices have been used to create higher harmonics for the guitar sound in a faster way and at a much lower sound level compared to valve amplifiers. In this context terms like overdrive, distortion and fuzz are used. Several definitions of these terms for musical applications especially in the guitar player world are available. For our discussion we will define overdrive as a first state where a nearly linear audio effect device at low input levels is driven by higher input levels into the nonlinear region of its characteristic curve. The operating region is in the linear region as well as in the nonlinear region, with a smooth transition. The main sound characteristic is of course from the nonlinear part. Overdrive has a warm and smooth sound. The second state is termed distortion, where the effects device mainly operates in the nonlinear region of the characteristic curve and reaches the upper input level, where the output level is fixed to a maximum level. Distortion covers a wide tonal area starting beyond tube warmth to buzz saw effects. All metal and grunge sounds fall into this category. The operating status of fuzz is represented by a completely nonlinear behavior of the effect device with a sound characterized by the guitar player terms “harder” and “harsher” than distortion. The fuzz effect is generally used on single-note lead lines.
+
+{\bfseries Overdrive.} For overdrive simulations a soft clipping of the input values has to be performed. One possible approach for a soft saturation nonlinearity is given by
+\[
+f(x)=\left\{\begin{array}{lll}{2 x} & {\text { for }} & {0 \leq x \leq 1 / 3,} \\ {\frac{3-(2-3 x)^{2}}{3}} & {\text { for }} & {1 / 3 \leq x \leq 2 / 3,} \\ {1} & {\text { for }} & {2 / 3 \leq x \leq 1.}\end{array}\right.
+\]
+The static input to output relation is shown in following figure.
+
+\input{overdrive.tex}
+Up to the threshold of 1/3 the input is multiplied by two and the characteristic curve is in its linear region. Between input values of 1/3 up to 2/3, the characteristic curve produces a soft compression described by the middle term of above equation. Above input values of 2/3 the output value is set to one. The corresponding {\bfseries Matlab} code for overdrive with symmetrical soft clipping is shown next.
+\begin{lstlisting}
+function y=symclip(audio)
+% "Overdrive" simulation with symmetrical clipping
+
+N = length(audio);
+th = 1 / 3; % threshold for symmetrical soft clipping 
+for n = 1: 1: N,
+	if abs(audio(n)) < th
+		y(n) = 2 * audio(n);
+	end
+	if abs(audio(n))>=th
+		if audio(n) > 0
+			y(n) = (3 - (2 - audio(n) * 3) .^ 2) / 3; 
+		end
+		if audio(n) < 0
+			y(n) = -(3 - (2 - abs(audio(n)) * 3) .^	2) / 3; 
+		end
+	end 
+	if abs(audio(n)) > 2 * th
+		if audio(n) > 0
+			y(n) = 1;
+		end
+		if audio(n) < 0
+			y(n) = -1;
+		end
+	end
+end
+\end{lstlisting}
+{\bfseries Destortion.} A nonlinearity suitable for the simulation of distortion is given by
+\[
+f(x)=\operatorname{sgn}(x)\left(1-\mathrm{e}^{-|x|}\right).
+\]
+The static characteristic curve is illustrated in following figure.
+
+\input{distortion.tex}
+The {\bfseries Matlab} code for performing above equation is shown next.
+\begin{lstlisting}
+function y=expdist(audio, gain, mix)
+% Distortion based on an exponential function
+% audio: input
+% gainn: amount of distortion, >0
+% mix: mix of original and distorted sound, 1=only distorted
+
+q = audio * gain;
+z = sign(q) .* (1 - exp(-abs(q)));
+y = mix * z + (1 - mix) * x;
+
+\end{lstlisting}
+
+
+\end{document}

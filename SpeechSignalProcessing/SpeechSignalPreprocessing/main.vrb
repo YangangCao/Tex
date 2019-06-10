@@ -1,0 +1,12 @@
+\vspace{0.5cm}
+{\bfseries Pre-emphasising}
+\vspace{0.5cm}
+\\Enhancing component and SNR in high frequency when transmission
+\begin{lstlisting}
+y = filter([1,-0.95],1,x);
+\end{lstlisting}
+\vspace{0.5cm}
+{\bfseries  Pre-emphasising Removal}
+\begin{lstlisting}
+y = filter(1,[1,-0.95],x);
+\end{lstlisting}

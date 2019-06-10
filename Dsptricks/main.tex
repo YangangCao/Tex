@@ -1,0 +1,55 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{caption}
+\usepackage[utopia]{mathdesign}
+\usepackage{dsptricks, dspfunctions, dspblocks}
+%\newenvironment{centerfig}
+%{\begin{minipage}{\linewidth}\centering}
+%	{\end{minipage}}
+
+\begin{document}
+
+		\begin{dspPlot}[sidegap=0.5,yticks=none]{-6, 6}{-1.2, 1.2}
+			\def\signal{ 0.5235 mul RadtoDeg sin }
+			\def\quantize{ dup 0 gt {-0.5} {0.5} ifelse sub truncate }
+			\dspFunc[linecolor=gray,linewidth=2pt]{x \quantize \signal }
+			\dspFunc[linestyle=dotted,linewidth=1pt]{x \signal}
+			\dspSignal{x \signal}
+		\end{dspPlot}
+		
+		\begin{dspPlot}[xtype=freq,xout=true]{-1,1}{-0.5,1.5}
+			\dspFunc[linecolor=gray,linestyle=dashed]{x \dspSincS{0}{6} 13 div}
+			\dspFunc{x \dspFIRI{ 0.3501  0.2823  0.1252 -0.0215 -0.0876
+					-0.0868    0.0374} }
+		\end{dspPlot}
+	
+		\begin{dspPlot}[xtype=freq,xticks=custom,xlabel={freq. (Hz)},yticks=2,ylabel={$X(j\Omega)$}]{-10,10}{-1,5}
+			\dspFunc{x abs 4 gt {0} {x abs 2 div dup mul 4 exch sub } ifelse}
+			\dspCustomTicks{-4 $-\Omega_N$ 0 $0$ 4 $\Omega_N$ 8 $\Omega_s$}
+		\end{dspPlot}
+
+		\begin{dspPlot}[sidegap=1]{-2,10}{-1.2,1.2}
+			\dspFunc{x \dspRect{-1}{1}}
+			\dspFunc{x \dspPorkpie{6}{2}}
+			\dspSignal[linecolor=gray]{x \dspSinc{2}{3} -1 mul}
+		\end{dspPlot}
+	
+		\begin{dspPlot}{0,31}{0,18}
+			\dspSignalOpt{/A [0 1 31 {360 32 div 5.4 mul mul cos} for]def}
+				{x \dspDFTMAG{A aload pop}}
+		\end{dspPlot}
+		
+		\begin{dspPlot}[xtype=freq,xticks=4]{-1,1}{0,1.1}
+			\dspFunc{x \dspTFM{0.000008952611389  0.000071620891113
+			0.000250673118897  0.000501346237795 0.000626682797244
+			0.000501346237795  0.000250673118897  0.000071620891113
+			0.000008952611389}{1.000000000000000  -5.975292291885454
+			16.581223292021008  -27.714232735429224  30.395097583553124  -22.347296704268793 10.745098004349103  -3.089246336974975  0.407076858898017}}
+		\end{dspPlot}
+		
+		\begin{dspPZPlot}[clabel={$r_0$},roc=0.5]{1.9}
+			\dspPZ[label=none]{0.5,0.5}
+			\dspPZ[type=zero,label={$x[1]$},lpos=135]{0,1}
+			\dspPZ[type=zero,label={$x[0]$},lpos=90]{1.25,0.78}
+		\end{dspPZPlot}
+	
+\end{document}
